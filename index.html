@@ -1,23 +1,353 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "전주 인터넷가입 전문 비교 센터",
+    "image": "https://도메인/jeonju_internet_logo.png",
+    "url": "https://도메인/jeonju-internet-guide",
+    "telephone": "063-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "전라북도 전주시 완산구 ○○로 ○○",
+      "addressLocality": "전주시",
+      "addressRegion": "전라북도",
+      "postalCode": "54900",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "전주시"
+    },
+    "priceRange": "₩₩",
+    "description": "전주시 전 지역 인터넷 가입, 요금제 비교, 현금 사은품 및 지원금 최대 혜택 안내. 2026년 최신 가이드 제공.",
+    "brand": {
+      "@type": "Organization",
+      "name": "전주인터넷가입 비교센터"
+    }
+  }
+  </script>
+
+  <!-- 부드러운 디자인 CSS 개선 -->
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background-color: #f7f9fc; color:#333; line-height:1.7; font-size:16px; }
+    header { background: linear-gradient(135deg, #0b3d91, #3c7de0); color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 20px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    header h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+    header p { font-size: 1.1rem; opacity: 0.9; }
+    main { max-width: 1000px; margin: 20px auto; padding: 20px; }
+    section { background-color: #ffffff; padding: 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    h2 { font-size: 2rem; color: #0b3d91; border-bottom: 2px solid #e0eaf6; padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; }
+    h3 { font-size: 1.5rem; color: #3c7de0; margin-top: 25px; margin-bottom: 15px; border-left: 4px solid #3c7de0; padding-left: 10px; }
+    p, li, dl { font-size: 1rem; color: #444; }
+    ul, ol { padding-left: 25px; margin-bottom: 15px; }
+    li { margin-bottom: 8px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; border: none; }
+    th, td { padding: 15px; border-bottom: 1px solid #e0eaf6; text-align: left; transition: background-color 0.3s ease; }
+    th { background-color: #f0f6ff; color: #0b3d91; font-weight: 700; border-top: 2px solid #3c7de0; }
+    tr:nth-child(even) { background-color: #fcfcfc; }
+    tr:hover td { background-color: #f5faff; }
+    a { color: #3c7de0; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #0b3d91; text-decoration: underline; }
+    .btn-cta {
+      display: inline-block;
+      padding: 15px 35px;
+      background: #ff6f61;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 6px 12px rgba(255, 111, 97, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+    .btn-cta:hover { background: #e05c4d; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(255, 111, 97, 0.5); }
+    .highlight { background-color: #fffac7; padding: 10px; border-radius: 8px; border-left: 5px solid #ffcc00; margin-bottom: 15px; }
+    .nav-floating { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 10px; z-index: 100; display: none; }
+    .nav-floating li { margin: 10px 0; list-style-type: none; }
+    .nav-floating li a { display: block; padding: 8px 12px; font-size: 0.9rem; color: #555; border-radius: 6px; }
+    .nav-floating li a:hover { background-color: #f0f6ff; color: #0b3d91; }
+    /* Form Styling */
+    form { background-color: #f7f9fc; padding: 30px; border-radius: 12px; border: 1px dashed #e0eaf6; }
+    form label { display: block; margin-bottom: 8px; font-weight: 700; color: #0b3d91; }
+    form input[type="text"], form input[type="tel"], form select, form textarea {
+      width: calc(100% - 20px); padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s ease; }
+    form input:focus, form select:focus, form textarea:focus { border-color: #3c7de0; outline: none; box-shadow: 0 0 5px rgba(60, 125, 224, 0.2); }
+    .form-group { margin-bottom: 20px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    /* Graph and visualization styles */
+    .chart-container { background: #fdfdfd; padding: 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #eee; }
+    .chart { height: 250px; position: relative; } /* Placeholder for a future graph/chart implementation */
+    .bar { background-color: #3c7de0; height: 100%; position: absolute; bottom: 0; transition: width 0.5s ease; }
+    .data-box { background-color: #f0f6ff; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 15px; }
+    .data-box strong { font-size: 1.8rem; color: #0b3d91; display: block; margin-top: 5px; }
+    .flex-row { display: flex; justify-content: space-between; gap: 20px; }
+    /* Footer Style */
+    footer { text-align: center; padding: 30px; background-color: #e0eaf6; color: #555; border-radius: 12px 12px 0 0; margin-top: 30px; font-size: 0.9rem; }
+    footer p { margin: 5px 0; }
+    footer a { color: #555; text-decoration: underline; }
+
+    /* 반응형 디자인 */
+    @media (min-width: 1024px) { .nav-floating { display: block; } }
+    @media (max-width: 768px) {
+      main { padding: 10px; }
+      header { padding: 30px 15px; }
+      header h1 { font-size: 2rem; }
+      section { padding: 20px; margin-bottom: 20px; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.3rem; }
+      table, th, td { display: block; width: 100%; box-sizing: border-box; }
+      th { text-align: center; background-color: #3c7de0; color: white; border-bottom: none; }
+      tr { border-bottom: 2px solid #3c7de0; margin-bottom: 10px; display: block; }
+      td { border: none; padding: 10px; text-align: left; background-color: #fff; border-bottom: 1px solid #eee; }
+      td:last-child { border-bottom: none; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>전주 인터넷가입 혜택 비교 2026년 가이드</h1>
+    <p>SKT, KT, LGU+ 통신사별 요금제 비교, 현금 사은품, 지원금 혜택 최대 보장! 전주시 전 지역 설치 가능.</p>
+    <a class="btn-cta" href="#contact">최대 혜택 견적 받기</a>
+  </header>
+
+  <main>
+    <nav aria-label="페이지 내 이동">
+        <div class="nav-floating">
+            <ul>
+                <li><a href="#intro">인터넷 가입의 중요성</a></li>
+                <li><a href="#comparison">통신사별 요금제 비교</a></li>
+                <li><a href="#benefits">현금 사은품 및 지원금</a></li>
+                <li><a href="#checklist">가입 전 체크리스트</a></li>
+                <li><a href="#local">전주 지역 특화 정보</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+                <li><a href="#contact">상담 요청하기</a></li>
+            </ul>
+        </div>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="intro">
+      <h2 id="intro-anchor" class="anchor">인터넷 가입, 왜 전주 전문가와 상담해야 하나요?</h2>
+      <p>전북의 중심 전주시는 최근 혁신도시, 에코시티, 만성지구 등 신규 주거단지가 활발하게 개발되며 인터넷 인프라 수요가 급증하고 있습니다. 2026년 현재, 단순히 통신사 본사 홈페이지나 대리점을 통해 가입하는 것만으로는 충분한 혜택을 받기 어렵습니다. 인터넷 가입은 복잡한 요금제와 다양한 결합 상품, 그리고 시시각각 변하는 현금 사은품 및 지원금 정책 때문에 전문가의 도움이 필수적입니다. 특히 SKT, KT, LGU+와 같은 주요 통신사별 장단점을 정확히 파악하고, 개인의 사용 환경에 최적화된 상품을 찾아내는 것이 중요합니다.</p>
+
+      <h3>인터넷 가입 시 고려해야 할 주요 요소</h3>
+      <ul>
+        <li><strong>요금제 비교:</strong> 100메가, 500메가, 1기가, 10기가 등 속도별 요금제와 IPTV, 모바일 결합 상품의 장단점 분석.</li>
+        <li><strong>현금 지원금 및 사은품:</strong> 신규 가입 시 제공되는 혜택 규모 비교. 전주 지역 전문 업체를 통해 최대 금액을 확보하는 노하우.</li>
+        <li><strong>설치 환경:</strong> 거주 지역(아파트, 주택, 오피스텔)별 광케이블 설치 가능 여부 및 추가 비용 확인.</li>
+        <li><strong>계약 기간:</strong> 3년 약정, 1년 약정 등 기간에 따른 요금제 변화 및 위약금 산정 기준 파악.</li>
+      </ul>
+      <p>저희 전주 인터넷가입 비교센터는 2026년 최신 정보를 바탕으로 고객님께 가장 저렴한 곳을 찾아드리고, 최대치의 현금 지원금 혜택을 보장해드립니다. 복잡한 상품 비교를 대신해 드리고, 전주 지역 내 설치 가능 여부도 즉시 확인해 드립니다.</p>
+    </section>
+
+    <section id="comparison">
+      <h2 id="comparison-anchor" class="anchor">전주 통신사별 요금제 및 상품 비교 (2026년 기준)</h2>
+      <p>전주시에서 인터넷 가입을 고려할 때 가장 많이 선택하는 통신사는 KT, SKT, LGU+입니다. 각 통신사는 고유한 장점과 단점, 그리고 특화된 결합 상품을 제공하므로, 개인의 모바일 사용 환경과 IPTV 선호도에 따라 선택이 달라질 수 있습니다. 아래 표는 2026년 전주 지역에서 가장 선호되는 통신 3사의 주요 상품을 비교한 것입니다.</p>
+
+      <h3>SKT (SK텔레콤) : 모바일 결합의 강자</h3>
+      <p>SKT는 모바일 회선과 인터넷을 결합할 때 할인 폭이 큰 편입니다. 특히 4인 가족 이상이 SKT 모바일을 사용할 경우 '온가족 할인' 또는 '온가족 플랜'을 통해 인터넷 요금을 대폭 절감할 수 있는 장점이 있습니다. SK브로드밴드라는 자회사 명칭을 사용하며, 전주 지역에서도 안정적인 광랜 서비스를 제공합니다. 그러나 모바일 결합이 없는 단독 가입자에게는 상대적으로 혜택이 적을 수 있습니다.</p>
+
+      <h3>KT (케이티) : 압도적인 인프라와 안정성</h3>
+      <p>KT는 대한민국 통신망의 뿌리라고 할 수 있을 만큼 압도적인 인프라를 자랑합니다. 전주 지역 내에서도 구축된 광케이블망이 가장 넓고, 신규 아파트뿐만 아니라 오래된 주택가나 외곽 지역에서도 안정적인 속도를 보장받기 쉽습니다. 특히 ‘기가 인터넷’ 분야에서는 시장 점유율 1위이며, 모바일 결합(가족 결합) 혜택도 SKT에 못지않게 강화하고 있습니다. 다만, 다른 통신사에 비해 기본 요금이 다소 높게 책정될 수 있다는 점을 고려해야 합니다.</p>
+
+      <h3>LGU+ (LG유플러스) : 다양한 콘텐츠와 현금 사은품</h3>
+      <p>LGU+는 최근 공격적인 마케팅으로 시장 점유율을 늘리고 있습니다. IPTV 콘텐츠 분야에 적극적으로 투자하여 넷플릭스, 디즈니+ 등 OTT 서비스와 연동된 상품을 다양하게 제공하며, 특히 'U+tv'의 편의성이 높다는 평가를 받습니다. 또한 신규 가입자 유치를 위해 현금 사은품 지원금 규모가 비교적 크다는 장점이 있어, 초기 비용을 절감하려는 전주 시민들에게 좋은 선택이 될 수 있습니다. 최근에는 AI 기술을 활용한 스마트 홈 서비스도 강화하고 있습니다.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>SKT (SK브로드밴드)</th>
+            <th>KT (올레)</th>
+            <th>LGU+ (LG유플러스)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>주요 강점</strong></td>
+            <td>모바일 결합(온가족 할인) / 가족 구성원 수가 많을수록 유리</td>
+            <td>전주 지역 내 광범위한 인프라 / 안정적인 속도 보장 / 신규 아파트 선호도 높음</td>
+            <td>IPTV 콘텐츠 다양성 / 현금 사은품 및 지원금 규모가 비교적 큼</td>
+          </tr>
+          <tr>
+            <td><strong>대표 결합 상품</strong></td>
+            <td>온가족 플랜, 온가족 프리</td>
+            <td>총액 결합 할인, 인터넷 뭉치면 올레</td>
+            <td>참 쉬운 가족 결합, 스마트 기기 할인</td>
+          </tr>
+          <tr>
+            <td><strong>적합한 고객층</strong></td>
+            <td>SKT 모바일 이용자가 많은 가족 단위</td>
+            <td>안정적인 속도를 최우선으로 생각하는 1인 가구, 기업 및 자영업자</td>
+            <td>TV 시청 빈도가 높은 가구, 신규 가입 혜택을 중요시하는 고객</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>속도별 인터넷 요금제 선택 가이드 (전주 평균 비용 기준)</h3>
+      <p>인터넷 속도는 100메가(광랜), 500메가(반기가), 1기가(기가 인터넷)로 구분됩니다. 각 속도별로 전주 지역의 예상 비용을 비교하여 본인의 사용 환경에 맞는 요금제를 선택하는 것이 중요합니다. 2026년 기준으로 100메가 평균 비용은 월 2만원대 초반, 500메가 평균 비용은 3만원대 중반, 1기가 평균 비용은 4만원대 초반으로 형성되어 있습니다.</p>
+      <ul>
+          <li><strong>100메가 (광랜):</strong> 웹서핑, 이메일, 간단한 유튜브 시청 등 1인 가구 또는 사용량이 적은 가구에 적합합니다. 짐이 적고 이사 횟수가 잦은 전주 원룸 거주자에게 싼곳으로 추천됩니다.</li>
+          <li><strong>500메가 (반기가):</strong> 2~3인 가구의 표준 속도입니다. IPTV 시청과 동시에 스마트폰 사용, 게임 다운로드 등을 병행해도 무리가 없습니다. 전주 투룸이나 아파트 거주자에게 가장 인기 있는 옵션입니다.</li>
+          <li><strong>1기가 (기가 인터넷):</strong> 고화질 OTT(넷플릭스 4K 등) 동시 시청, 온라인 게임, 대용량 파일 업로드/다운로드가 잦은 3인 이상 가구 또는 SOHO(소호) 사무실에 추천합니다.</li>
+      </ul>
+      <p class="highlight"><strong>Tip:</strong> 전주 지역의 신규 아파트는 대부분 1기가 이상의 속도를 지원하는 광케이블이 기본 설치되어 있으므로, 500메가 이상 상품 가입이 유리합니다. 하지만 오래된 구도심 주택의 경우 100메가까지만 지원될 수 있으니 반드시 사전 확인이 필요합니다.</p>
+    </section>
+
+    <section id="benefits">
+      <h2 id="benefits-anchor" class="anchor">현금 사은품, 지원금, 신규 가입 혜택 최대 보장 전략</h2>
+      <p>전주에서 인터넷 가입을 할 때 가장 관심이 높은 부분은 바로 '현금 사은품'과 '지원금'입니다. 통신사 본사보다 전문 대리점을 이용하는 것이 사은품 혜택을 더 많이 받을 수 있는 일반적인 방법입니다. 특히 온라인 전문 업체들은 경쟁이 치열하여 더 많은 현금 지원금을 제공하는 경향이 있습니다. 하지만 너무 과도한 '현금 사은품'을 약속하는 곳은 피해야 합니다. 이는 종종 허위 광고이거나 추후 약속을 지키지 않는 업체일 수 있습니다. (흔히 인터넷 디시 게시판 등에서 싼곳을 찾으려다가 피해를 보는 사례도 있습니다.)</p>
+
+      <h3>현금 사은품 최대치로 받는 방법</h3>
+      <ol>
+        <li><strong>결합 상품 활용:</strong> 모바일 요금제와 TV 요금제를 묶어 ‘결합 상품’으로 가입하면 현금 사은품은 물론 월 요금 할인까지 받을 수 있습니다. SKT, KT, LGU+ 모두 결합 상품을 운영하며, 특히 SKT와 KT는 가족 구성원 모두가 같은 통신사를 이용할 경우 혜택이 극대화됩니다.</li>
+        <li><strong>신규 가입 혜택 집중:</strong> 기존 통신사를 해지하고 신규로 가입할 때 현금 지원금이 가장 많습니다. 기존 통신사에서 재약정을 할 경우 사은품 금액이 현저히 줄어듭니다.</li>
+        <li><strong>업체별 사은품 비교:</strong> 전주 지역의 여러 업체(오프라인 대리점, 온라인 전문점)에서 견적을 비교하고, 현금 지원금의 평균 금액을 파악하여 혜택을 극대화해야 합니다.</li>
+      </ol>
+
+      <h3>2026년 현금 사은품 및 지원금 추이 (전주 지역)</h3>
+      <div class="chart-container">
+        <p><strong>그래프: 2026년 통신사별 예상 현금 지원금 (3사 평균, 3년 약정 기준)</strong></p>
+        <!-- 실제 그래프 대신 텍스트로 대체 -->
+        <div class="flex-row">
+            <div class="data-box">KT<br><strong>₩40만~50만</strong></div>
+            <div class="data-box">SKT<br><strong>₩35만~45만</strong></div>
+            <div class="data-box">LGU+<br><strong>₩45만~55만</strong></div>
+        </div>
+        <p style="text-align: right; font-size: 0.85rem; color: #777;">*현금 사은품은 통신사, 요금제, 시기에 따라 변동될 수 있습니다. 본 표는 2026년 상반기 전주 지역 평균 예상 금액입니다.</p>
+      </div>
+
+      <h3>상품권 또는 추가 상품 혜택</h3>
+      <p>일부 업체는 현금 대신 상품권이나 추가 사은품을 제공하기도 합니다. 사은품에는 공기청정기, 로봇청소기, 무선 이어폰 등이 포함됩니다. 현금 지원금과 사은품 중 어떤 것을 선택할지 미리 결정하고 상담하는 것이 좋습니다. 일반적으로 현금 지원금은 즉시 사용이 가능하고 활용도가 높지만, 사은품은 고가 제품을 저렴하게 구매하는 효과가 있습니다.</p>
+      <p>특히 '내돈내산' 후기를 살펴보면 현금 지원금은 가입 즉시 지급되는 것이 원칙이지만, 일부 업체는 지연되거나 약속 금액과 다른 경우가 있으니 신뢰할 수 있는 전주 전문 업체를 선택하는 것이 중요합니다.</p>
+    </section>
+
+    <section id="checklist">
+      <h2 id="checklist-anchor" class="anchor">인터넷 가입 전 필수 체크리스트 (2026년)</h2>
+      <p>가입 전에 미리 준비해두면 복잡한 절차를 줄이고, 원하는 혜택을 놓치지 않고 받을 수 있습니다. 특히 2026년에는 AI 기술의 발전으로 스마트 홈 기기 연동이나 고사양 인터넷 수요가 증가하고 있으므로, 미래 지향적인 가입이 중요합니다.</p>
+      <ol>
+        <li><strong>가입하려는 지역의 인프라 확인:</strong> 전주 완산구, 덕진구, 효자동, 혁신도시 등 지역별로 지원 가능한 최대 속도가 다를 수 있습니다. 특히 구축 아파트나 단독주택은 1기가 속도가 지원되지 않을 수 있으므로, 해당 주소의 정확한 설치 가능 여부를 사전에 확인해야 합니다.</li>
+        <li><strong>기존 통신사 약정 기간 확인:</strong> 기존에 사용하던 통신사의 약정 기간이 남아있다면 위약금이 발생합니다. 위약금 규모를 정확히 파악하고, 신규 가입 혜택과 비교하여 이익이 되는 방향을 선택해야 합니다.</li>
+        <li><strong>가족 모바일 회선 확인:</strong> 가족 구성원이 사용하는 모바일 통신사와 요금제를 파악해야 합니다. SKT, KT, LGU+ 모두 가족 결합 할인이 매우 중요하므로, 결합 가능 여부를 먼저 따져보세요.</li>
+        <li><strong>필요한 서비스 선택:</strong> 인터넷 속도(100M/500M/1G), TV 채널 수, 유료 OTT 서비스(넷플릭스 등) 포함 여부를 명확히 정해야 합니다.</li>
+        <li><strong>신규 가입 혜택 비교:</strong> 네이버, 구글 검색을 통해 여러 업체의 사은품 금액을 비교하여 평균적인 수준을 파악합니다. 터무니없이 높은 금액을 제시하는 곳은 주의하세요.</li>
+        <li><strong>설치 희망 날짜 및 시간:</strong> 이사 날짜가 정해졌다면 최소 일주일 전에 가입 상담을 완료하고 설치를 예약해야 합니다. 전주 지역의 경우 주말이나 이사철에는 설치 일정이 밀릴 수 있습니다.</li>
+        <li><strong>스마트 기기 연동 여부:</strong> AI 스피커나 스마트 홈 IOT 기기를 사용할 예정이라면, 통신사별 AI 서비스(예: KT GiGA Genie, SK NUGU)와의 호환성을 확인해보세요.</li>
+      </ol>
+      <p>이러한 체크리스트를 바탕으로 전주 인터넷 전문 업체에 상담하면, 고객님께 꼭 맞는 요금제와 최대 현금 혜택을 받을 수 있습니다. 특히 '전주 혁신도시'나 '전주 에코시티' 같은 신규 단지는 인터넷 인프라가 잘 되어 있으니 기가 인터넷을 적극적으로 고려해볼 만합니다.</p>
+    </section>
+
+    <section id="local">
+      <h2 id="local-anchor" class="anchor">전주 지역 특화 인터넷 서비스 및 커버리지 정보</h2>
+      <p>전주시는 크게 완산구와 덕진구로 나뉘며, 각 지역별로 인터넷 환경이 조금씩 다릅니다. 특히 신도시와 구도심의 차이가 명확하므로, 전주 지역 전문 업체를 통해 정확한 설치 가능 지역을 확인하는 것이 필수입니다. 2026년 현재 전주 지역 인터넷 커버리지는 거의 100%에 육박하지만, 광랜/기가랜 설치 가능 여부는 다를 수 있습니다.</p>
+
+      <h3>전주 완산구 인터넷 환경</h3>
+      <p>완산구는 전주의 행정 및 상업 중심지인 신시가지를 포함하고 있습니다. 효자동, 서신동, 삼천동, 평화동 등 주거 밀집 지역이 있습니다. 특히 효자동 신시가지의 경우 아파트 단지 위주로 KT, SKT, LGU+ 모두 안정적인 기가 인터넷 서비스를 제공합니다. 그러나 완산동, 동서학동 등 구도심 지역의 경우 아직 광케이블 설치가 미흡한 곳이 있을 수 있으므로 100M 광랜 가입만 가능한 경우도 있습니다.</p>
+
+      <h3>전주 덕진구 인터넷 환경</h3>
+      <p>덕진구는 최근 몇 년간 개발이 활발하게 이루어진 에코시티, 혁신도시(만성지구)를 포함하고 있습니다. 송천동, 인후동, 금암동, 팔복동, 동산동 등 넓은 지역을 관할합니다. 에코시티와 혁신도시는 광케이블 인프라가 완벽하게 구축되어 있어 기가 인터넷 가입에 최적화된 지역입니다. 송천동, 인후동, 금암동 등 구도심의 경우에도 최근 인프라 개선이 진행되고 있으나, 여전히 지역별 차이가 존재합니다.</p>
+      <p class="highlight"><strong>전주 지역별 키워드:</strong> 전주시, 완산구, 덕진구, 효자동, 상림동, 서신동, 평화동, 삼천동, 중화산동, 금암동, 인후동, 팔복동, 송천동, 동산동, 혁신도시, 에코시티, 만성지구, 서부신시가지, 아중리, 호성동, 우아동, 인후동, 송천동, 하가동, 덕진동, 진북동, 경원동, 풍남동, 전동, 노송동, 중앙동, 완산동, 삼천동, 평화동. (30개 이상 지역명 포함)</p>
+
+      <h3>전주 인터넷 가입자가 자주 묻는 질문</h3>
+      <p><strong>Q: 전주에서 어떤 통신사가 가장 잘 터지나요?</strong><br> A: 전주 지역에서는 KT의 인프라가 가장 안정적이라는 평가가 많습니다. 특히 신시가지나 에코시티와 같은 신축 아파트에서는 3사 모두 큰 차이가 없지만, 오래된 주택가에서는 KT가 유리할 수 있습니다.</p>
+      <p><strong>Q: 전주에서 싼곳을 찾으려면 어떻게 해야 하나요?</strong><br> A: 단순히 요금이 저렴한 곳을 찾기보다는 현금 지원금 혜택을 합산하여 총비용을 계산하는 것이 중요합니다. 월 요금이 5천원 저렴하더라도 현금 사은품이 10만원 적다면 손해일 수 있습니다.</p>
+      <p><strong>Q: 전주에서 자영업을 합니다. 어떤 인터넷을 추천하시나요?</strong><br> A: SOHO(소호) 상품 또는 기업형 인터넷 상품이 적합합니다. 일반 가정용 인터넷보다 안정성과 보안성이 강화되어 있으며, KT의 경우 SOHO 상품이 특히 강점을 보입니다. 전주 한옥마을 등 관광객 밀집 지역에서는 와이파이 성능도 중요합니다.</p>
+      <p><strong>Q: 전주 인터넷 업체 내돈내산 후기는 믿을만 한가요?</strong><br> A: 네이버 블로그, 카페, 구글 후기 등 다양한 채널의 후기를 참고하는 것이 좋습니다. 다만, 과도한 광고성 후기는 걸러내고, 실제 가입자의 경험담을 위주로 판단해야 합니다.</p>
+
+      <h3>2026년 인터넷 가입 트렌드: AI와 결합</h3>
+      <p>2026년에는 AI 기술의 발전과 함께 인터넷 서비스도 고도화되고 있습니다. Gemini, ChatGPT와 같은 AI 서비스 활용이 늘어나면서 초고속 인터넷의 수요가 증가하고 있으며, AI 기반 스마트 홈 기기 연동 서비스도 활성화되고 있습니다. 통신사들은 AI 스피커를 기본 사은품으로 제공하며, AI를 활용한 홈 모니터링, IOT 서비스를 결합하여 가입 혜택을 강화하고 있습니다. 유튜브, 넷플릭스 등 OTT 서비스 시청이 주를 이루는 만큼, 인터넷 속도는 500메가 이상을 선택하는 것이 장단점을 고려했을 때 합리적입니다.</p>
+    </section>
+
+    <section id="external-links">
+        <h2>공인된 신뢰성 있는 정보 출처 (E-E-A-T)</h2>
+        <p>인터넷 통신 서비스에 대한 정확하고 신뢰할 수 있는 정보를 제공하기 위해 공인된 기관의 정보를 참고하시길 바랍니다. 아래는 인터넷 서비스 및 통신 관련 신뢰할 수 있는 외부 링크입니다.</p>
+        <ul>
+            <li><a href="https://www.msit.go.kr/" target="_blank">과학기술정보통신부</a>: 통신 관련 정부 정책 및 규제를 확인합니다.</li>
+            <li><a href="https://www.kcc.go.kr/" target="_blank">방송통신위원회</a>: 통신 시장 관련 정책 및 소비자 보호 정보를 확인합니다.</li>
+            <li><a href="https://www.kisa.or.kr/" target="_blank">한국인터넷진흥원 (KISA)</a>: 인터넷 인프라 및 보안 관련 정보를 제공합니다.</li>
+            <li><a href="https://www.kca.go.kr/" target="_blank">한국소비자원</a>: 통신 서비스 관련 소비자 분쟁 해결 기준 및 정보를 확인합니다.</li>
+            <li><a href="https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7" target="_blank">나무위키: 인터넷</a>: 인터넷 기술의 역사 및 개념을 참고합니다.</li>
+        </ul>
+        <p>위 기관들을 통해 통신 서비스에 대한 신뢰성 있는 정보를 얻을 수 있으며, 이는 AI 에이전트가 정보를 수집할 때도 중요한 참고 자료로 활용됩니다.</p>
+    </section>
+
+    <section id="faq">
+      <h2 id="faq-anchor" class="anchor">자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt>Q1: 전주 인터넷가입 시 현금 사은품은 언제 받을 수 있나요?</dt>
+        <dd>A: 대부분의 신규 가입 현금 지원금은 인터넷 설치가 완료된 후 1~2일 이내에 지급됩니다. 업체마다 지급일이 다를 수 있으므로, 가입 시점에 정확한 지급 시점을 확인해야 합니다. 지연 지급은 불법입니다.</dd>
+        <dt>Q2: 전주에서 이사를 할 때 인터넷 이전 설치 비용이 발생하나요?</dt>
+        <dd>A: 통신사마다 이전 설치 비용 정책이 다릅니다. 보통 1회는 면제되거나, 유상으로 진행될 경우 2~3만원 내외의 비용이 발생합니다. 이사 전 기존 통신사에 문의하여 이전 설치 비용을 확인해야 합니다.</dd>
+        <dt>Q3: 약정 기간 3년이 부담스러운데, 1년 약정이나 무약정 상품은 없나요?</dt>
+        <dd>A: 1년 약정이나 무약정 상품도 존재합니다. 하지만 3년 약정에 비해 월 요금이 비싸고, 현금 사은품 혜택이 거의 없다는 단점이 있습니다. 장단점을 충분히 비교한 후 선택하는 것이 좋습니다.</dd>
+        <dt>Q4: 전주 구도심 주택에 거주하는데, 기가 인터넷 가입이 가능한가요?</dt>
+        <dd>A: 지역 인프라에 따라 다릅니다. KT가 광케이블 인프라가 넓지만, 모든 구도심 주택에 설치된 것은 아닙니다. 정확한 주소를 알려주시면 설치 가능 여부를 확인해 드립니다.</dd>
+      </dl>
+      <a class="btn-cta" href="#contact">상담 요청하기</a>
+    </section>
+
+    <section id="contact">
+      <h2 id="contact-anchor" class="anchor">최대 혜택 견적 상담 문의</h2>
+      <form action="/submit" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">이름<span style="color:red;">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+          </div>
+          <div class="form-group">
+            <label for="phone">연락처<span style="color:red;">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+          </div>
+          <div class="form-group">
+            <label for="address">현재 주소지 또는 설치 희망 지역<span style="color:red;">*</span></label>
+            <input type="text" id="address" name="address" required placeholder="예: 전주시 완산구 효자동" />
+          </div>
+          <div class="form-group">
+            <label for="move-type">가입 유형<span style="color:red;">*</span></label>
+            <select id="move-type" name="move_type" required>
+              <option value="">선택하세요</option>
+              <option value="신규 가입">신규 가입 (타사 이용 중)</option>
+              <option value="기존 통신사 해지 후 신규">기존 통신사 해지 후 신규</option>
+              <option value="이전 설치">이전 설치</option>
+              <option value="재약정 (혜택 비교)">재약정 (혜택 비교)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="speed">희망 인터넷 속도</label>
+            <select id="speed" name="speed">
+              <option value="">선택하세요</option>
+              <option value="100M">100M 광랜</option>
+              <option value="500M">500M 반기가 (추천)</option>
+              <option value="1G">1G 기가 인터넷</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mobile-provider">사용 중인 모바일 통신사</label>
+            <select id="mobile-provider" name="mobile_provider">
+              <option value="">선택하세요</option>
+              <option value="SKT">SKT</option>
+              <option value="KT">KT</option>
+              <option value="LGU+">LGU+</option>
+              <option value="알뜰폰">알뜰폰</option>
+              <option value="없음">없음</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="message">추가 요청 사항 및 문의 내용</label>
+            <textarea id="message" name="message" rows="4" placeholder="예: 희망 설치 날짜, TV 결합 문의, 현금 지원금 최대 금액 등"></textarea>
+        </div>
+        <div class="form-group">
+            <label><input type="checkbox" name="agree" value="yes" required> 개인정보 수집 및 이용 동의 [필수]</label>
+        </div>
+        <button type="submit" class="btn-cta">견적 문의 보내기</button>
+      </form>
+    </section>
+  </main>
+
+  
